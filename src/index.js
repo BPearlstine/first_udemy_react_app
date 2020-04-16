@@ -1,15 +1,18 @@
-// Import the React and ReactDOM libraries
-// const React = require('react');  => CommonJS modules
-// instead of ES2015
 import React from 'react';
 import ReactDOM from 'react-dom';
+import faker from 'faker';
+import CommentDetail from './CommentDetail';
 
-// Create a react component
 const App = () => {
-    return <div>Hi there!</div>;
+    return (
+        <div className="ui container comments">
+            <CommentDetail author={faker.name.firstName()} date={faker.date.weekday()} text={faker.lorem.paragraph()}/>
+            <CommentDetail author={faker.name.firstName()} date={faker.date.weekday()} text={faker.lorem.paragraph()}/>
+            <CommentDetail author={faker.name.firstName()} date={faker.date.weekday()} text={faker.lorem.paragraph()}/>
+        </div>
+    );
 }
 
-// Take the react component and show it on the screen
 ReactDOM.render(
     <App />,
     document.querySelector('#root')
