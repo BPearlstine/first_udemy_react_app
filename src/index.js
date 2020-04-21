@@ -4,18 +4,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// Create a react component
-const App = () => {
-    const buttonText = 'Click me';
-    return (
-        <div>
-            <label className="label" htmlFor="name">Enter name:</label>
-            <input id="name" type="text" />
-            <br />
-            <button style={{ backgroundColor: 'blue', color:'white' }}>
-                {buttonText}
-            </button>
-        </div>);
+
+
+class App extends React.Component {
+    // js version of __init__
+    constructor(props) {
+        super(props);
+
+        this.state = { lat: null };
+
+        window.navigator.geolocation.getCurrentPosition(
+            (position) => {
+                // always use setState to update this.state
+                this.setState({ lat: position.coords.latitude})
+            },
+            (err) => console.log(err) 
+        );   
+    }
+
+    // React says we have to define render
+    // or your page won't... render
+    render(){ 
+        return <div> Latitude: {this.state.lat}</div>;
+    }
 }
 
 // Take the react component and show it on the screen
