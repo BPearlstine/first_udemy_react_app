@@ -3,6 +3,8 @@
 // instead of ES2015
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner';
 
 
 
@@ -27,16 +29,25 @@ class App extends React.Component {
         );  
     }
 
-    // React says we have to define render
-    // or your page won't... render
-    render(){ 
+    renderContent(){
         if (this.state.errorMessage && !this.state.lat) {
             return <div>Error: {this.state.errorMessage}</div>;
         } else if (!this.state.errorMessage && this.state.lat) {
-            return <div>latitude: {this.state.lat}</div>;
+            return <SeasonDisplay lat={this.state.lat} />;
         } 
 
-        return <div>Loading!</div>;
+        return <Spinner message="Please accept location request"/>;
+    }
+
+    // React says we have to define render
+    // or your page won't... render
+    render(){ 
+        return (
+            // no actual class name, just an example of wrapping
+            <div className="border red">
+                {this.renderContent()}
+            </div>
+        );
     }
 }
 
