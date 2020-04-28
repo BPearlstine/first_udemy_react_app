@@ -3,20 +3,7 @@
 // instead of ES2015
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// Create a react component
-const App = () => {
-    const buttonText = 'Click me';
-    return (
-        <div>
-            <label className="label" htmlFor="name">Enter name:</label>
-            <input id="name" type="text" />
-            <br />
-            <button style={{ backgroundColor: 'blue', color:'white' }}>
-                {buttonText}
-            </button>
-        </div>);
-}
+import App from './components/App';
 
 // Take the react component and show it on the screen
 ReactDOM.render(
